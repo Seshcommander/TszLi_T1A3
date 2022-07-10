@@ -26,7 +26,7 @@ def print_options():
     opt = input("Select your option (1-4): ")
     return opt
 
-# price check input function to receive user input and check against
+# price check input function to receive user input and save it to a var. Then returns the var so we can access outside of function
 
 
 def user_input_date():
@@ -36,19 +36,22 @@ def user_input_date():
 
 user_entered_date = user_input_date
 
-# def price_check_input():
-#     if df[df["date"].str.match(date_to_check)]:
-#         return
-#     else:
-#         return False
+
+def price_check_input():
+    pass
+# At a loss for how price check input can take user_enetered_date var and check it against the pd data frame of the csv.
+# As per above, need to have a way of matching user_date YYYY-MM-DD to the corresponding row that has the exact date
 
 
 def price_comparison():
     pass
+# this functions purpose is to allow the user to enter a date they want the price of btc at and it will calculate the % gain/loss against the most recent updated price (line 2 of the CSV)
+# E.g. Day 1 / Day 2 --> may be too ambitious but could work
 
 
 def volume_check_input():
     pass
+# simple function to check volume of BTC at a given date.
 
 
 option = ""
