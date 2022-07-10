@@ -1,8 +1,9 @@
 from os import system
 import pandas as pd
+import numpy as np
 
 # imported pandas library as pd
-df = pd.read_csv(
+data = pd.read_csv(
     "/Users/petey/CoderAcademy/TszLi_T1A3/docs/btcusdt.csv", usecols=[
         "unix", "date", "symbol", "open", "high", "low", "close", "Volume BTC", "Volume USDT"], dtype={
             "unix": int, "date": str, "symbol": str, "open": float, "high": float, "low": float, "close": float, "Volume BTC": float, "Volume USDT": float
@@ -13,9 +14,6 @@ df = pd.read_csv(
 def welcome_message_BTC():
     print("Welcome to the BTC historical price/volume checker!\n To begin, please select from the following options:")
 # Welcome message to user
-
-
-# welcome_message_BTC()
 
 # function to display options 1-4, user input is saved as opt var
 
@@ -36,13 +34,13 @@ def user_input_date():
     return user_date
 
 
-date_to_check = user_input_date
+user_entered_date = user_input_date
 
-
-def price_check_input():
-    # df.loc[df["date"] == date_to_check]
-    # return
-    pass
+# def price_check_input():
+#     if df[df["date"].str.match(date_to_check)]:
+#         return
+#     else:
+#         return False
 
 
 def price_comparison():
@@ -57,11 +55,12 @@ option = ""
 
 while option != "4":
     system("clear")
+    welcome_message_BTC()
     option = print_options()
     system("clear")
     if option == "1":
         user_input_date()
-        price_check_input()
+        print(user_entered_date)
     elif option == "2":
         price_comparison()
     elif option == "3":
@@ -73,6 +72,8 @@ while option != "4":
 
     input("Press Enter to continue...")
     system("clear")
-# print(df[["date", "close"]])
-print()
+
+df = pd.DataFrame(data)
+print(df)
+
 print("Goodbye have a great time!")
