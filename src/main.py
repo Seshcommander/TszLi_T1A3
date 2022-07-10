@@ -46,7 +46,6 @@ def price_check_input():
 def price_comparison():
     pass
 # this functions purpose is to allow the user to enter a date they want the price of btc at and it will calculate the % gain/loss against the most recent updated price (line 2 of the CSV)
-# E.g. Day 1 / Day 2 --> may be too ambitious but could work
 
 
 def volume_check_input():
@@ -54,6 +53,7 @@ def volume_check_input():
 # simple function to check volume of BTC at a given date.
 
 
+# Below is just how i would create a menu in terminal for the user to select an option and then be directed to the function that takes the input.
 option = ""
 
 while option != "4":
@@ -76,6 +76,7 @@ while option != "4":
     input("Press Enter to continue...")
     system("clear")
 
+# using the below to print the csv in pandas df for testing. will not print before the options menus (line 74 and above)
 df = pd.DataFrame(data)
 print(df)
 
