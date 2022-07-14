@@ -1,12 +1,15 @@
 from os import system
 import pandas as pd
-import numpy as np
+
 
 # imported pandas library as pd
-data = pd.read_csv(
-    "/Users/petey/CoderAcademy/TszLi_T1A3/docs/btcusdt.csv", usecols=[
+df = pd.read_csv(
+    "/Users/petey/CoderAcademy/TszLi_T1A3/docs/btcusdt.csv",
+    parse_dates=["date"],
+    date_parser=lambda x: pd.to_datetime(x, format="%Y-%m-%d %H:%M:%S"),
+    usecols=[
         "unix", "date", "symbol", "open", "high", "low", "close", "Volume BTC", "Volume USDT"], dtype={
-            "unix": int, "date": str, "symbol": str, "open": float, "high": float, "low": float, "close": float, "Volume BTC": float, "Volume USDT": float
+        "unix": int, "date": str, "symbol": str, "open": float, "high": float, "low": float, "close": float, "Volume BTC": float, "Volume USDT": float
     })
 # dataframe variable assigned to pd.read_csv function with input parameters specifying file location, columns and data types
 
@@ -34,9 +37,6 @@ def user_input_date():
     return user_date
 
 
-user_entered_date = user_input_date
-
-
 def price_check_input():
     pass
 # At a loss for how price check input can take user_enetered_date var and check it against the pd data frame of the csv.
@@ -62,10 +62,14 @@ while option != "4":
     option = print_options()
     system("clear")
     if option == "1":
-        user_input_date()
-        print(user_entered_date)
+        user_date = user_input_date()
+        # exact dates
+        print(df.loc[(df['date'] == user_date)])
     elif option == "2":
         price_comparison()
+        # between two dates
+        print(df.loc[(df['date'] >= '2017-10-23 00:00:00')
+                     & (df['date'] < '2017-10-27 00:00:00')])
     elif option == "3":
         volume_check_input()
     elif option == "4":
@@ -76,8 +80,7 @@ while option != "4":
     input("Press Enter to continue...")
     system("clear")
 
+    print("Goodbye have a great time!")
 # using the below to print the csv in pandas df for testing. will not print before the options menus (line 74 and above)
-df = pd.DataFrame(data)
-print(df)
-
-print("Goodbye have a great time!")
+# df = pd.DataFrame(df)
+# print(df)
