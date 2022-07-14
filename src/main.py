@@ -1,8 +1,8 @@
+# imported pandas library as pd and system from operating system
 from os import system
 import pandas as pd
 
-
-# imported pandas library as pd
+# dataframe variable (df) assigned to pd.read_csv function with input parameters specifying file location, columns, formatting of dates and data type of columns
 df = pd.read_csv(
     "/Users/petey/CoderAcademy/TszLi_T1A3/docs/btcusdt.csv",
     parse_dates=["date"],
@@ -11,16 +11,15 @@ df = pd.read_csv(
         "unix", "date", "symbol", "open", "high", "low", "close", "Volume BTC", "Volume USDT"], dtype={
         "unix": int, "date": str, "symbol": str, "open": float, "high": float, "low": float, "close": float, "Volume BTC": float, "Volume USDT": float
     })
-# dataframe variable assigned to pd.read_csv function with input parameters specifying file location, columns and data types
+
+# Welcome message to user
 
 
 def welcome_message_BTC():
-    print("Welcome to the BTC historical price/volume checker!\n To begin, please select from the following options:")
-# Welcome message to user
-
-# function to display options 1-4, user input is saved as opt var
+    print("Welcome to the BTC historical price/volume checker! \n To begin, please select from the following options:")
 
 
+# function to display options 1-4 for the user to select
 def print_options():
     print("1) Check historical price of BTC")
     print("2) Price comparison between today and entered date")
@@ -29,36 +28,62 @@ def print_options():
     opt = input("Select your option (1-4): ")
     return opt
 
-# price check input function to receive user input and save it to a var. Then returns the var so we can access outside of function
 
-
+#  Function that takes a date of the user's choosing and returns the user_date variable
 def user_input_date():
     user_date = input("Please enter a date in the format (YYYY-MM-DD): ")
     return user_date
 
 
+# price check input function calls on the user_input_date function and saves it as user_date
+
 def price_check_input():
     user_date = user_input_date()
-    # exact dates
-    print(float(df.loc[(df['date'] == user_date)]['close']))
-# At a loss for how price check input can take user_enetered_date var and check it against the pd data frame of the csv.
-# As per above, need to have a way of matching user_date YYYY-MM-DD to the corresponding row that has the exact date
+    date_price = float(df.loc[(df['date'] == user_date)]['close'])
+    print(f"The price of BTC on the {user_date} was ${int(date_price)}")
+    # df.loc locates the column with the date exactly matching the user's input date and prints out the closing price column as a float
+
+# price comparison function stores user's input date called by the function into a variable.
+# Additional operations performed on the closing price of the user's entered date and compares it with the current date
 
 
 def price_comparison():
     user_comparison_date = user_input_date()
+
     user_close_price = float(
         df.loc[(df['date'] == user_comparison_date)]['close'])
+
     current_close_price = float(df.loc[(df['date'] == '2022-07-07')]['close'])
-    print(f"The close price on your chosen date is {user_close_price}")
-    print(f"The current close price of BTC is {current_close_price}")
 
+    difference = user_close_price - current_close_price
 
-# this functions purpose is to allow the user to enter a date they want the price of btc at and it will calculate the % gain/loss against the most recent updated price (line 2 of the CSV)
+    percentdiff = (difference / current_close_price) * 100
+    if percentdiff < 0:
+        print(
+            f"The price of BTC currently: ${int(current_close_price)} has decreased by {int(percentdiff)}% since {user_comparison_date}")
+    elif percentdiff > 0:
+        print(
+            f"On the {user_comparison_date}, the price of BTC was {int(percentdiff)}% greater than the current price: ${int(current_close_price)} ")
+    return
+    # this functions purpose is to allow the user to enter a date they want the price of btc at and it will calculate the % gain/loss against the most recent updated price (line 2 of the CSV)
 
 
 def volume_check_input():
-    pass
+    volume_input_date = user_input_date()
+    print("Please select which volumes to check!")
+    volume_input = input("BTC or USDT?: ")
+    if volume_input == "BTC":
+        user_date_vol = float(
+            df.loc[(df['date'] == volume_input_date)]['Volume BTC'])
+        print(
+            f"The volume of Bitcoin traded on {volume_input_date} was {int(user_date_vol)} BTC")
+    elif volume_input == "USDT":
+        user_date_vol = float(
+            df.loc[(df['date'] == volume_input_date)]['Volume USDT'])
+        print(
+            f"The trading volume of Bitcoin in USDT on {volume_input_date} is {int(user_date_vol)} USDT")
+
+    return
 # simple function to check volume of BTC at a given date.
 
 
@@ -74,9 +99,6 @@ while option != "4":
         price_check_input()
     elif option == "2":
         price_comparison()
-        # between two dates
-        # print(df.loc[(df['date'] >= '2017-10-23 00:00:00')
-        #              & (df['date'] < '2017-10-27 00:00:00')])
     elif option == "3":
         volume_check_input()
     elif option == "4":
@@ -87,7 +109,8 @@ while option != "4":
     input("Press Enter to continue...")
     system("clear")
 
-    print("Goodbye have a great time!")
-# using the below to print the csv in pandas df for testing. will not print before the options menus (line 74 and above)
-# df = pd.DataFrame(df)
-# print(df)
+print("Goodbye have a great time!")
+
+# between two dates
+# print(df.loc[(df['date'] >= '2017-10-23 00:00:00')
+#              & (df['date'] < '2017-10-27 00:00:00')])
