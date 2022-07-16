@@ -24,8 +24,9 @@ def print_options():
     print("1) Check historical price")
     print("2) Price comparison between today and entered date")
     print("3) Check volume")
-    print("4) Exit")
-    option = input("Select your option (1-4): ")
+    print("4) Profit Calculator")
+    print("5) Exit")
+    option = input("Select your option (1-5): ")
     return option
 
 
@@ -75,9 +76,14 @@ def price_comparison():
                 f"The price of BTC currently: ${int(current_close_price)} has decreased by {int(percentdiff)}% since {user_comparison_date}")
         elif percentdiff > 0:
             print(
-                f"On the {user_comparison_date}, the price of BTC was {int(percentdiff)}% greater than the current price: ${int(current_close_price)} ")
+                f"On the {user_comparison_date}, the price of BTC was ${user_close_price} and has increased by {int(percentdiff)}% compared to the current price: ${int(current_close_price)} ")
+        elif percentdiff == 0:
+            print(
+                f"The price of BTC at {user_comparison_date} is the same as the current price.")
 
     # this functions purpose is to allow the user to enter a date they want the price of btc at and it will calculate the % gain/loss against the most recent updated price (line 2 of the CSV)
+
+# simple function to check volume of BTC at a given date.
 
 
 def volume_check_input():
@@ -95,15 +101,42 @@ def volume_check_input():
                 df.loc[(df['date'] == volume_input_date)]['Volume USDT'])
             print(
                 f"The trading volume of Bitcoin in USDT on {volume_input_date} is {int(user_date_vol)} USDT")
+        else:
+            print("That is not a valid unit")
 
 
-# simple function to check volume of BTC at a given date.
+def profit_calculator():
+    profit_input_date = user_input_date()
+    if profit_input_date:
+        print("Please enter how much BTC you had at that date")
+        user_btc = input("Amount of BTC: ")
+        if user_btc.isnumeric():
+            ref_price = float(
+                df.loc[(df['date'] == profit_input_date)]['close'])
+            user_profit = (int(user_btc) * int(ref_price))
+            current_price = float(
+                df.loc[(df['date'] == '2022-07-07')]['close'])
+            current_profit = (int(user_btc) * int(current_price))
+            profit_diff = current_profit - user_profit
+            print(
+                f"If you had {user_btc} bitcoins on {profit_input_date}, it would've been worth ${user_profit} and is currently worth ${current_profit}")
+            if profit_diff > 0:
+                print(
+                    f"Your profits since {profit_input_date} are: ${profit_diff}")
+            elif profit_diff < 0:
+                print(
+                    f"Your losses since {profit_input_date} are: ${profit_diff}")
+            elif profit_diff == 0:
+                print(
+                    f"You have made no profits or losses since ${profit_input_date}")
+        else:
+            print("That is not a valid entry, please enter a numeric value")
 
 
-# Below is just how i would create a menu in terminal for the user to select an option and then be directed to the function that takes the input.
+        # Below is a while loop that checks if the user selects the option and then calls the corresponding function
 option = ""
 
-while option != "4":
+while option != "5":
     system("clear")
     welcome_message()
     option = print_options()
@@ -115,6 +148,8 @@ while option != "4":
     elif option == "3":
         volume_check_input()
     elif option == "4":
+        profit_calculator()
+    elif option == "5":
         continue
     else:
         print("Invalid option")
