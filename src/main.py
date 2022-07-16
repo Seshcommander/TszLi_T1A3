@@ -4,7 +4,7 @@ import pandas as pd
 
 # dataframe variable (df) assigned to pd.read_csv function with input parameters specifying file location, columns, formatting of dates and data type of columns
 df = pd.read_csv(
-    "/Users/petey/CoderAcademy/TszLi_T1A3/docs/btcusdt.csv",
+    "docs/btcusdt.csv",
     parse_dates=["date"],
     date_parser=lambda x: pd.to_datetime(x, format="%Y-%m-%d %H:%M:%S"),
     usecols=[
