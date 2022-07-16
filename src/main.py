@@ -109,28 +109,25 @@ def profit_calculator():
     profit_input_date = user_input_date()
     if profit_input_date:
         print("Please enter how much BTC you had at that date")
-        user_btc = input("Amount of BTC: ")
-        if user_btc.isnumeric():
-            ref_price = float(
-                df.loc[(df['date'] == profit_input_date)]['close'])
-            user_profit = (int(user_btc) * int(ref_price))
-            current_price = float(
-                df.loc[(df['date'] == '2022-07-07')]['close'])
-            current_profit = (int(user_btc) * int(current_price))
-            profit_diff = current_profit - user_profit
+        user_btc = float(input("Amount of BTC: "))
+        ref_price = float(
+            df.loc[(df['date'] == profit_input_date)]['close'])
+        user_profit = (user_btc) * float(ref_price)
+        current_price = float(
+            df.loc[(df['date'] == '2022-07-07')]['close'])
+        current_profit = (user_btc) * float(current_price)
+        profit_diff = current_profit - user_profit
+        print(
+            f"If you had {user_btc} bitcoins on {profit_input_date}, it would've been worth ${int(user_profit)} and is currently worth ${int(current_profit)}")
+        if profit_diff > 0:
             print(
-                f"If you had {user_btc} bitcoins on {profit_input_date}, it would've been worth ${user_profit} and is currently worth ${current_profit}")
-            if profit_diff > 0:
-                print(
-                    f"Your profits since {profit_input_date} are: ${profit_diff}")
-            elif profit_diff < 0:
-                print(
-                    f"Your losses since {profit_input_date} are: ${profit_diff}")
-            elif profit_diff == 0:
-                print(
-                    f"You have made no profits or losses since ${profit_input_date}")
-        else:
-            print("That is not a valid entry, please enter a numeric value")
+                f"Your profits since {profit_input_date} are: ${int(profit_diff)}")
+        elif profit_diff < 0:
+            print(
+                f"Your losses since {profit_input_date} are: ${int(profit_diff)}")
+        elif profit_diff == 0:
+            print(
+                f"You have made no profits or losses since ${profit_input_date}")
 
 
         # Below is a while loop that checks if the user selects the option and then calls the corresponding function

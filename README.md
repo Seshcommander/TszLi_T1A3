@@ -1,4 +1,4 @@
-## Welcome to Peter's Bitcoin Checker!
+# Welcome to Peter's Bitcoin Checker!
 
 ### Dependencies:
 
@@ -16,7 +16,7 @@ Please check you have the correct version of python using `python --version` in 
 1. Ensure Python 3 is installed (refer to https://www.python.org/downloads/)
 2. Run command `./run-project.sh` in your OS terminal or double click run-project.sh
 
-_\*Note that virtual environment is preferred for users who do not want to install the dependencies on their native system_
+_\*Note that virtual environment is preferred for users who do not want to install or overwrite the dependencies on their native system_
 
 #### <u>Native</u>
 
@@ -33,7 +33,8 @@ When the program first runs you will be prompted to a menu:
 
 - Allows you to check price of Bitcoin on the specified date
 - Allows you to compare a specific date with the _current date_ (2022-07-07)
-  -Checks volume of BTC in USDT or BTC at the specified date
+- Checks volume of BTC in USDT or BTC at the specified date
+- Profit calculator allows you to see whether you have made a profit or not based on the number of bitcoins you had
 
 ![menu](./docs/Options%20menu%20interface.png)
 _Fig 1. Menu_
