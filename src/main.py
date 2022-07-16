@@ -104,30 +104,48 @@ def volume_check_input():
         else:
             print("That is not a valid unit")
 
+# Profit calculator takes user input date and also how much BTC they enter and calculate the value of it at the specified date and compare it to current date.
+# Also shows profit/loss depending on if number is > 0 or < 0
+
+
+def is_number(input):
+    try:
+        value = float(input)
+        if value >= 0:
+            return True
+        else:
+            return False
+    except ValueError:
+        return False
+
 
 def profit_calculator():
     profit_input_date = user_input_date()
     if profit_input_date:
         print("Please enter how much BTC you had at that date")
-        user_btc = float(input("Amount of BTC: "))
-        ref_price = float(
-            df.loc[(df['date'] == profit_input_date)]['close'])
-        user_profit = (user_btc) * float(ref_price)
-        current_price = float(
-            df.loc[(df['date'] == '2022-07-15')]['close'])
-        current_profit = (user_btc) * float(current_price)
-        profit_diff = current_profit - user_profit
-        print(
-            f"If you had {user_btc} bitcoins on {profit_input_date}, it would've been worth ${int(user_profit)} and is currently worth ${int(current_profit)}")
-        if profit_diff > 0:
+        user_btc = input("Amount of BTC: ")
+        if is_number(user_btc):
+            ref_price = float(
+                df.loc[(df['date'] == profit_input_date)]['close'])
+            user_profit = float((user_btc)) * float(ref_price)
+            current_price = float(
+                df.loc[(df['date'] == '2022-07-15')]['close'])
+            current_profit = float((user_btc)) * float(current_price)
+            profit_diff = current_profit - user_profit
             print(
-                f"Your profits since {profit_input_date} are: ${int(profit_diff)}")
-        elif profit_diff < 0:
+                f"If you had {user_btc} bitcoins on {profit_input_date}, it would've been worth ${int(user_profit)} and is currently worth ${int(current_profit)}")
+            if profit_diff > 0:
+                print(
+                    f"Your profits since {profit_input_date} are: ${int(profit_diff)}")
+            elif profit_diff < 0:
+                print(
+                    f"Your losses since {profit_input_date} are: ${int(profit_diff)}")
+            elif profit_diff == 0:
+                print(
+                    f"You have made no profits or losses since ${profit_input_date}")
+        else:
             print(
-                f"Your losses since {profit_input_date} are: ${int(profit_diff)}")
-        elif profit_diff == 0:
-            print(
-                f"You have made no profits or losses since ${profit_input_date}")
+                "That is not a valid entry, please enter a numeric value greater than zero")
 
 
         # Below is a while loop that checks if the user selects the option and then calls the corresponding function

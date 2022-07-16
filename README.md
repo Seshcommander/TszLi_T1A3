@@ -34,9 +34,9 @@ _\*Warning! Installing the dependencies on your native system may override the c
 When the program first runs you will be prompted to a menu:
 
 - Allows you to check price of Bitcoin on the specified input date
-- Allows you to compare a specific date with the _current date_ (2022-07-07)
-- Checks volume of BTC in USDT or BTC at the specified date
-- Profit calculator allows you to see whether you have made a profit or not based on the number of bitcoins you had
+- Allows you to compare the bitcoin price at the specific date with the _current date_ (2022-07-15)
+- Checks volume of BTC in USDT or BTC at the specified date (BTC/USDT inputs are case sensitive)
+- Profit calculator allows you to see how much the user's entered bitcoins were worth at the specified time and shows the profit or loss compared to current prices.
 
 _Fig 1. - Menu_
 ![menu](./docs/Options%20menu%20interface.png)
@@ -72,7 +72,7 @@ Below are the testing feature IDS:
 ![Ids](./docs/Feature%20IDs.png)
 
 Full report can be found in the docs folder:
-`/Users/petey/CoderAcademy/TszLi_T1A3/docs/Peter Li - T1A3 Testing Report - Test Cases.pdf`
+`docs/Peter Li - T1A3 Testing Report - Test Cases.pdf`
 
 ## _Source code repo:_
 
