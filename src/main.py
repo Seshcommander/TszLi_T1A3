@@ -25,8 +25,8 @@ def print_options():
     print("2) Price comparison between today and entered date")
     print("3) Check volume of BTC")
     print("4) Exit")
-    opt = input("Select your option (1-4): ")
-    return opt
+    option = input("Select your option (1-4): ")
+    return option
 
 
 #  Function that takes a date of the user's choosing and returns the user_date variable
@@ -38,7 +38,7 @@ def user_input_date():
                 user_date, format="%Y-%m-%d %H:%M:%S")
             return user_date_dt
         except Exception as e:
-            print("That is not a valid format")
+            print("That is not a valid date format")
             return False
     else:
         print("Incorrect date length. Please provide date in correct format (YYYY-MM-DD)")
