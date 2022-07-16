@@ -27,27 +27,54 @@ _\*Warning! Installing the dependencies on your native system may override the c
 
 <br>
 
-### Application Walkthrough:
+## Application Walkthrough:
 
 <br>
 
 When the program first runs you will be prompted to a menu:
 
-- Allows you to check price of Bitcoin on the specified date
+- Allows you to check price of Bitcoin on the specified input date
 - Allows you to compare a specific date with the _current date_ (2022-07-07)
 - Checks volume of BTC in USDT or BTC at the specified date
 - Profit calculator allows you to see whether you have made a profit or not based on the number of bitcoins you had
 
-_Fig 1. Menu_
-![menu](
+_Fig 1. - Menu_
+![menu](./docs/Options%20menu%20interface.png)
 
 Using the keyboard, typing options 1-3 will allow you to enter a date:
 <br>
 
-_Figure 1.2. Option 1 selected and date provided_
+_Figure 1.2. - Option 1 selected and date provided_
 ![Pricecheck](./docs/price%20check%20interface.png)
 
-_Figure 1.3. Option 2 selected and date provided_
+_Figure 1.3. - Option 2 selected and date provided_
 ![Pricecomparison](./docs/Price%20comparison%20interface.png)
 
-_Figure 1.4. Option 3 selected and date provided_
+_Figure 1.4. - Option 3 selected and date provided_
+![volumecheck](./docs/Volume%20Check%20Interface.png)
+
+_Figure 1.5. - Option 4 selected and date provided_
+![profitcalc](./docs/Profit%20Calc%20Interface.png)
+
+<br>
+
+## _Errors and testing:_
+
+Common errors in the program include:
+
+1. Not providing date format correctly or entering any date
+2. Not providing units correctly (BTC/USDT for volume checker)
+3. Not providing values correctly (Profit Calculator)
+
+To minimise any errors that may occur, please enter in the format provided.
+
+Below are the testing feature IDS:
+![Ids](./docs/Feature%20IDs.png)
+
+Full report can be found in the docs folder:
+`/Users/petey/CoderAcademy/TszLi_T1A3/docs/Peter Li - T1A3 Testing Report - Test Cases.pdf`
+
+## _Source code repo:_
+
+Full source code repository can be found at:
+https://github.com/Seshcommander/TszLi_T1A3

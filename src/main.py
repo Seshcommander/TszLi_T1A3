@@ -4,7 +4,7 @@ import pandas as pd
 
 # dataframe variable (df) assigned to pd.read_csv function with input parameters specifying file location, columns, formatting of dates and data type of columns
 df = pd.read_csv(
-    "docs/btcusdt.csv",
+    "docs/BTCUSDT.csv",
     parse_dates=["date"],
     date_parser=lambda x: pd.to_datetime(x, format="%Y-%m-%d %H:%M:%S"),
     usecols=[
@@ -66,7 +66,7 @@ def price_comparison():
             df.loc[(df['date'] == user_comparison_date)]['close'])
 
         current_close_price = float(
-            df.loc[(df['date'] == '2022-07-07')]['close'])
+            df.loc[(df['date'] == '2022-07-15')]['close'])
 
         difference = user_close_price - current_close_price
 
@@ -114,7 +114,7 @@ def profit_calculator():
             df.loc[(df['date'] == profit_input_date)]['close'])
         user_profit = (user_btc) * float(ref_price)
         current_price = float(
-            df.loc[(df['date'] == '2022-07-07')]['close'])
+            df.loc[(df['date'] == '2022-07-15')]['close'])
         current_profit = (user_btc) * float(current_price)
         profit_diff = current_profit - user_profit
         print(
