@@ -32,15 +32,26 @@ def print_options():
 #  Function that takes a date of the user's choosing and returns the user_date variable
 def user_input_date():
     user_date = input("Please enter a date in the format (YYYY-MM-DD): ")
-    return user_date
+    if len(user_date) < 11 and len(user_date) > 0:
+        try:
+            user_date_dt = pd.to_datetime(
+                user_date, format="%Y-%m-%d %H:%M:%S")
+            return user_date_dt
+        except Exception as e:
+            print("That is not a valid format")
+            return False
+    else:
+        print("Incorrect date length. Please provide date in correct format (YYYY-MM-DD)")
+    return False
 
 
 # price check input function calls on the user_input_date function and saves it as user_date
 
 def price_check_input():
     user_date = user_input_date()
-    date_price = float(df.loc[(df['date'] == user_date)]['close'])
-    print(f"The price of BTC on the {user_date} was ${int(date_price)}")
+    if user_date:
+        date_price = float(df.loc[(df['date'] == user_date)]['close'])
+        print(f"The price of BTC on the {user_date} was ${int(date_price)}")
     # df.loc locates the column with the date exactly matching the user's input date and prints out the closing price column as a float
 
 # price comparison function stores user's input date called by the function into a variable.
@@ -49,41 +60,43 @@ def price_check_input():
 
 def price_comparison():
     user_comparison_date = user_input_date()
+    if user_comparison_date:
+        user_close_price = float(
+            df.loc[(df['date'] == user_comparison_date)]['close'])
 
-    user_close_price = float(
-        df.loc[(df['date'] == user_comparison_date)]['close'])
+        current_close_price = float(
+            df.loc[(df['date'] == '2022-07-07')]['close'])
 
-    current_close_price = float(df.loc[(df['date'] == '2022-07-07')]['close'])
+        difference = user_close_price - current_close_price
 
-    difference = user_close_price - current_close_price
+        percentdiff = (difference / current_close_price) * 100
+        if percentdiff < 0:
+            print(
+                f"The price of BTC currently: ${int(current_close_price)} has decreased by {int(percentdiff)}% since {user_comparison_date}")
+        elif percentdiff > 0:
+            print(
+                f"On the {user_comparison_date}, the price of BTC was {int(percentdiff)}% greater than the current price: ${int(current_close_price)} ")
 
-    percentdiff = (difference / current_close_price) * 100
-    if percentdiff < 0:
-        print(
-            f"The price of BTC currently: ${int(current_close_price)} has decreased by {int(percentdiff)}% since {user_comparison_date}")
-    elif percentdiff > 0:
-        print(
-            f"On the {user_comparison_date}, the price of BTC was {int(percentdiff)}% greater than the current price: ${int(current_close_price)} ")
-    return
     # this functions purpose is to allow the user to enter a date they want the price of btc at and it will calculate the % gain/loss against the most recent updated price (line 2 of the CSV)
 
 
 def volume_check_input():
     volume_input_date = user_input_date()
-    print("Please select which volumes to check!")
-    volume_input = input("BTC or USDT?: ")
-    if volume_input == "BTC":
-        user_date_vol = float(
-            df.loc[(df['date'] == volume_input_date)]['Volume BTC'])
-        print(
-            f"The volume of Bitcoin traded on {volume_input_date} was {int(user_date_vol)} BTC")
-    elif volume_input == "USDT":
-        user_date_vol = float(
-            df.loc[(df['date'] == volume_input_date)]['Volume USDT'])
-        print(
-            f"The trading volume of Bitcoin in USDT on {volume_input_date} is {int(user_date_vol)} USDT")
+    if volume_input_date:
+        print("Please select which volumes to check!")
+        volume_input = input("BTC or USDT?: ")
+        if volume_input == "BTC":
+            user_date_vol = float(
+                df.loc[(df['date'] == volume_input_date)]['Volume BTC'])
+            print(
+                f"The volume of Bitcoin traded on {volume_input_date} was {int(user_date_vol)} BTC")
+        elif volume_input == "USDT":
+            user_date_vol = float(
+                df.loc[(df['date'] == volume_input_date)]['Volume USDT'])
+            print(
+                f"The trading volume of Bitcoin in USDT on {volume_input_date} is {int(user_date_vol)} USDT")
 
-    return
+
 # simple function to check volume of BTC at a given date.
 
 
