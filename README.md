@@ -27,7 +27,9 @@ _\*Warning! Installing the dependencies on your native system may override the c
 
 <br>
 
-### Application Walkthrough
+### Application Walkthrough:
+
+<br>
 
 When the program first runs you will be prompted to a menu:
 
@@ -36,10 +38,16 @@ When the program first runs you will be prompted to a menu:
 - Checks volume of BTC in USDT or BTC at the specified date
 - Profit calculator allows you to see whether you have made a profit or not based on the number of bitcoins you had
 
-![menu](./docs/Options%20menu%20interface.png)
 _Fig 1. Menu_
+![menu](
 
 Using the keyboard, typing options 1-3 will allow you to enter a date:
+<br>
 
-![inputdate](./docs/price%20check%20interface.png)
 _Figure 1.2. Option 1 selected and date provided_
+![Pricecheck](./docs/price%20check%20interface.png)
+
+_Figure 1.3. Option 2 selected and date provided_
+![Pricecomparison](./docs/Price%20comparison%20interface.png)
+
+_Figure 1.4. Option 3 selected and date provided_
