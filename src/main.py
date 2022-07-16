@@ -15,15 +15,15 @@ df = pd.read_csv(
 # Welcome message to user
 
 
-def welcome_message_BTC():
-    print("Welcome to the BTC historical price/volume checker! \n To begin, please select from the following options:")
+def welcome_message():
+    print("Welcome to Peter's BTC historical data checker \n To begin, please select from the following options:")
 
 
 # function to display options 1-4 for the user to select
 def print_options():
-    print("1) Check historical price of BTC")
+    print("1) Check historical price")
     print("2) Price comparison between today and entered date")
-    print("3) Check volume of BTC")
+    print("3) Check volume")
     print("4) Exit")
     option = input("Select your option (1-4): ")
     return option
@@ -105,7 +105,7 @@ option = ""
 
 while option != "4":
     system("clear")
-    welcome_message_BTC()
+    welcome_message()
     option = print_options()
     system("clear")
     if option == "1":
@@ -123,7 +123,3 @@ while option != "4":
     system("clear")
 
 print("Goodbye have a great time!")
-
-# between two dates
-# print(df.loc[(df['date'] >= '2017-10-23 00:00:00')
-#              & (df['date'] < '2017-10-27 00:00:00')])

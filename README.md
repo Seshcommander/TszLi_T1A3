@@ -1,20 +1,22 @@
-## Welcome to Peter's Bitcoin Checker
+## Welcome to Peter's Bitcoin Checker!
 
 ### Dependencies:
 
 - Python 3
-- Pandas + Dependencies (included in requirements.txt and script)
+- Pandas + Numpy + python-dateutil + pytz + six
 
 ### Installation steps:
 
 <br>
 
-#### Virtual env (preferred)
+#### <u>Virtual env (preferred)</u>
 
 1. Ensure Python 3 is installed (refer to https://www.python.org/downloads/)
-2. run command `./run-project.sh`
+2. Run command `./run-project.sh`
 
-#### Native
+_\*Note that virtual environment is preferred for users who do not want to install the dependencies on their native system_
 
-2. run the command `pip install -r requirements.txt` in your terminal
-3. run command `python src/main.py`
+#### <u>Native</u>
+
+1. Run the command `pip install -r requirements.txt` in your terminal
+2. Run command `python src/main.py`
