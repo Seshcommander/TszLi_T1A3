@@ -7,6 +7,12 @@
 
 Please check you have the correct version of python using `python --version` in your computer's terminal
 
+### Python 3 Minimum Requirements:
+
+`Processors: Intel® Core™ i3 or AMD Ryzen 3250u CPU Operating System: Windows 7, Linux 64-bit RHEL or Mac OS X 10.11 & up RAM: 1GB of on-board system memory Disk Space: 1-2GB of Hard Drive space` according to (Khan, 2021)
+
+Reference:
+
 ### Application Installation steps:
 
 <br>
@@ -66,6 +72,8 @@ Common errors in the program include:
 2. Not providing units correctly (BTC/USDT for volume checker)
 3. Not providing values correctly (Profit Calculator)
 
+Error messages will output if the user provides invalid inputs. Please enter inputs carefully
+
 To minimise any errors that may occur, please enter in the format provided.
 
 Below are the testing feature IDS:
@@ -78,3 +86,11 @@ Full report can be found in the docs folder:
 
 Full source code repository can be found at:
 https://github.com/Seshcommander/TszLi_T1A3
+
+## Implementation Plan:
+
+Source: `docs/T1A3_Peter Li-Implementation_Plan.pdf`
+
+## _References:_
+
+Khan, H., 2022. What Are The Ideal Computer Specs For Python Programming In 2021 – [Brief Guide]. [online] Ssiddique.info. Available at: <https://ssiddique.info/ideal-computer-specs-for-python-programming.html> [Accessed 17 July 2022].

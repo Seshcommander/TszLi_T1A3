@@ -1,6 +1,7 @@
 # imported pandas library as pd and system from operating system
 from os import system
 import pandas as pd
+import numpy as np
 
 # dataframe variable (df) assigned to pd.read_csv function with input parameters specifying file location, columns, formatting of dates and data type of columns
 df = pd.read_csv(
@@ -104,10 +105,8 @@ def volume_check_input():
         else:
             print("That is not a valid unit")
 
-# Profit calculator takes user input date and also how much BTC they enter and calculate the value of it at the specified date and compare it to current date.
-# Also shows profit/loss depending on if number is > 0 or < 0
 
-
+# Confirms if the input (user_btc) and future inputs are a float and greater than zero and returns True if it is and False if it isn't
 def is_number(input):
     try:
         value = float(input)
@@ -117,6 +116,10 @@ def is_number(input):
             return False
     except ValueError:
         return False
+
+# Profit calculator takes user input date and also how much BTC they enter and calculate the value of it at the specified date and compare it to current date.
+# Also shows profit/loss depending on if number is > 0 or < 0
+# Else statement runs if is_number(user_btc) returns False
 
 
 def profit_calculator():
@@ -148,7 +151,7 @@ def profit_calculator():
                 "That is not a valid entry, please enter a numeric value greater than zero")
 
 
-        # Below is a while loop that checks if the user selects the option and then calls the corresponding function
+# Below is a while loop that checks if the user selects the option and then calls the corresponding function
 option = ""
 
 while option != "5":
