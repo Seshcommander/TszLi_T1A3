@@ -69,9 +69,9 @@ def price_comparison():
         current_close_price = float(
             df.loc[(df['date'] == '2022-07-15')]['close'])
 
-        difference = user_close_price - current_close_price
+        difference = current_close_price - user_close_price
 
-        percentdiff = (difference / current_close_price) * 100
+        percentdiff = (difference / user_close_price) * 100
         if percentdiff < 0:
             print(
                 f"The price of BTC currently: ${int(current_close_price)} has decreased by {int(percentdiff)}% since {user_comparison_date}")
